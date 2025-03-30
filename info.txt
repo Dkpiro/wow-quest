@@ -1,0 +1,11 @@
+
+ Erstelle im Ordner mein-quest-spiel einen neuen Unterordner mit dem Namen assets.
+• Füge dort folgende Dateien hinzu:
+◦ map.jpg (Fantasy-Karte)
+◦ npc1.png (Bild von Quest-NPC 1)
+◦ npc2.png (Bild von Quest-NPC 2)
+◦ npc3.png (Bild von Quest-NPC 3)
+◦ sound-click.mp3 (Klick-Sound)
+◦ sound-correct.mp3 (Sound für richtige Antwort)
+◦ sound-wrong.mp3 (Sound für falsche Antwort)
+Falls du keine eigenen Dateien hast, kannst du Platzhalter-Bilder aus dem Internet nehmen oder eigene Sounds mit kostenlosen Tools wie Bfxr oder Freesound.org suchen.

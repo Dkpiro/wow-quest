@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy-Quest-Welt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Willkommen in Azeral - Die Quest-Welt</h1>
+    <div id="map-container">
+        <img src="assets/map.webp" id="map" alt="Fantasy-Karte">
+        <!-- NPCs als klickbare Questgeber -->
+        <img src="assets/npc1.png" class="npc" style="top: 55%; right: 20%;" onclick="startQuest(1)">
+        <img src="assets/npc2.png" class="npc" style="top: 30%; left: 42%; width: 100px; height: auto" onclick="startQuest(2)">
+        <img src="assets/npc3.png" class="npc" style="top: 70%; left: 20%;" onclick="startQuest(3)">
+    </div>
+    <!-- Quest-Fenster -->
+    <div id="quest-modal" class="hidden">
+        <p id="quest-text"></p>
+        <input type="text" id="answer" placeholder="Antwort eingeben">
+        <button onclick="checkAnswer()">Antwort prüfen</button>
+        <button onclick="closeModal()">Schließen</button>
+    </div>
+    <audio id="sound-click" src="assets/sound-click.mp3"></audio>
+    <audio id="sound-correct" src="assets/sound-correct.mp3"></audio>
+    <audio id="sound-wrong" src="assets/sound-wrong.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+
+</html>
