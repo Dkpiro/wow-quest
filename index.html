@@ -9,18 +9,21 @@
 </head>
 
 <body>
-    <h1>Willkommen in Azeral - Die Quest-Welt</h1>
+    <h1>Pfad des Nordwinds: Deine Reise jenseits der bekannten Lande</h1>
     <div id="map-container">
         <img src="assets/map.webp" id="map" alt="Fantasy-Karte">
         <!-- NPCs als klickbare Questgeber -->
         <img src="assets/npc1.png" class="npc" style="top: 55%; right: 20%;" onclick="startQuest(1)">
         <img src="assets/npc2.png" class="npc" style="top: 30%; left: 42%; width: 100px; height: auto" onclick="startQuest(2)">
         <img src="assets/npc3.png" class="npc" style="top: 70%; left: 20%;" onclick="startQuest(3)">
+        <img src="assets/npc4.png" class="npc" style="top: 70%; left: 20%;" onclick="startQuest(4)">
+        <img src="assets/npc5.png" class="npc" style="top: 70%; left: 20%;" onclick="startQuest(5)">
     </div>
     <!-- Quest-Fenster -->
-    <div id="quest-modal" class="hidden">
+    <div id="quest-modal" style="display: none;">
+        <p id="quest-story" style="font-style: italic; margin-bottom: 10px;"></p>
         <p id="quest-text"></p>
-        <input type="text" id="answer" placeholder="Antwort eingeben">
+        <input type="text" id="answer" placeholder="Deine Antwort eingeben...">
         <button onclick="checkAnswer()">Antwort prüfen</button>
         <button onclick="closeModal()">Schließen</button>
     </div>
