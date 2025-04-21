@@ -49,17 +49,52 @@ function startQuest(questId) {
 // Antwort prüfen
 function checkAnswer() {
     const userAnswer = document.getElementById("answer").value.trim();
+    const feedback = document.getElementById("quest-feedback");
+
     if (userAnswer.toLowerCase() === quests[currentQuest].antwort.toLowerCase()) {
         playSound("sound-correct");
-        alert("Richtig! Du hast die Quest bestanden.");
+        showFeedback("Richtig! Du hast die Quest bestanden.", true);
         document.querySelector(`img[onclick="startQuest(${currentQuest})"]`).style.filter = "grayscale(100%)";
     } else {
         playSound("sound-wrong");
-        alert("Falsch! Versuche es nochmal.");
+        showFeedback("Falsch! Versuche es nochmal.", false);
     }
 }
+
+function showFeedback(message, isSuccess) {
+    const feedback = document.getElementById("quest-feedback");
+    feedback.innerText = message;
+
+    feedback.classList.remove("hidden", "success", "error", "show");
+    feedback.classList.add(isSuccess ? "success" : "error", "show");
+
+    setTimeout(() => {
+        feedback.classList.remove("show");
+        setTimeout(() => feedback.classList.add("hidden"), 300);
+    }, 2500);
+}
+
+
 // Modal schließen
 function closeModal() {
     document.getElementById("quest-modal").style.display = "none";
     document.getElementById("answer").value = "";
+}
+
+document.body.addEventListener("click", () => {
+    const music = document.getElementById("bg-music");
+    if (music.paused) {
+        music.play();
+    }
+}, { once: true });
+
+function showBubble(message) {
+    const bubble = document.getElementById("npc-bubble");
+    bubble.innerText = message;
+    bubble.classList.remove("hidden");
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+        bubble.classList.add("hidden");
+    }, 3000);
 }

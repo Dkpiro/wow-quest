@@ -11,9 +11,12 @@ body {
 }
 
 #map {
-    width: 100%;
-    height: auto;
-    max-width: none;
+    width: 80vw;              /* 80% of the viewport width */
+    height: auto;             /* keep aspect ratio */
+    max-height: 80vh;         /* max 80% of viewport height */
+    border: 5px solid #aa771c;
+    box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.7);
+    margin-top: 40px;         /* add breathing room for your headline */
 }
 
 .npc {
@@ -23,6 +26,7 @@ body {
     height: auto;
     cursor: pointer;
     transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 16px black)
 }
 
 .npc:hover {
@@ -45,3 +49,59 @@ body {
 .hidden {
     display: none;
 }
+
+.speech-bubble {
+    position: absolute;
+    top: 10%;
+    left: 35%;
+    background: #576dcf;
+    color: #f1eeee;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: 'Garamond', serif;
+    border: 2px solid black;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    max-width: 300px;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.feedback-box {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(244, 208, 63, 0.95); /* golden feel */
+    color: #1a1a1a;
+    padding: 15px 25px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-family: 'Garamond', serif;
+    font-size: 20px;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.feedback-box.success {
+    background: rgba(76, 175, 80, 0.9); /* green */
+    color: #fff;
+}
+
+.feedback-box.error {
+    background: rgba(192, 57, 43, 0.9); /* red */
+    color: #fff;
+}
+
+.feedback-box.show {
+    opacity: 1;
+}
+
