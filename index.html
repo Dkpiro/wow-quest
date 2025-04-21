@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <h1>Pfad des Nordwinds: Deine Reise jenseits der bekannten Lande</h1>
-    <button id="start-btn" onclick="startAdventure()">Abenteuer beginnen</button>
+    <div id="main-content">
+        <h1>Pfad des Nordwinds: Deine Reise jenseits der bekannten Lande  <button id="start-btn" onclick="startAdventure()">Abenteuer beginnen</button></h1>
+    </div>
+
+    
     <div id="map-container">
         <img src="assets/map.webp" id="map" alt="Fantasy-Karte">
         <!-- NPCs als klickbare Questgeber -->
@@ -21,9 +24,8 @@
         <img src="assets/npc5.png" class="npc" style="top: 36%; left: 62%; width:120px; height: auto" onclick="startQuest(5)">
         <img src="assets/npc6.png" class="npc" style="top: 26%; left: 49%; width: 120px; height: auto;" onclick="showBubble('Frostmourne hungers..')">
         <div id="npc-bubble" class="speech-bubble hidden" style="top: 20%; left: 55%"></div>
-
-
     </div>
+
     <!-- Quest-Fenster -->
     <div id="quest-modal" style="display: none;">
         <p id="quest-story" style="font-style: bold; margin-bottom: 10px;"></p>
