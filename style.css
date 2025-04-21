@@ -50,6 +50,25 @@ body {
     display: none;
 }
 
+#start-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-family: 'Garamond', serif;
+    background-color: #f4d03f;
+    color: #1a1a1a;
+    border: 2px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    transition: all 0.2s ease;
+}
+
+#start-btn:hover {
+    transform: scale(1.05);
+    background-color: #ffea75;
+}
+
 .speech-bubble {
     position: absolute;
     top: 10%;

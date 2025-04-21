@@ -81,12 +81,13 @@ function closeModal() {
     document.getElementById("answer").value = "";
 }
 
-document.body.addEventListener("click", () => {
+function startAdventure() {
     const music = document.getElementById("bg-music");
-    if (music.paused) {
-        music.play();
-    }
-}, { once: true });
+    music.play().catch(err => console.log("Autoplay failed:", err));
+    
+    // Hide the button after it’s clicked
+    document.getElementById("start-btn").style.display = "none";
+}
 
 function showBubble(message) {
     const bubble = document.getElementById("npc-bubble");
