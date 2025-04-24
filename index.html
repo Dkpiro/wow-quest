@@ -22,8 +22,24 @@
         <img src="assets/npc2.png" class="npc" style="top: 65%; left: 64%; width: 100px; height: auto" onclick="startQuest(2)">
         <img src="assets/npc4.png" class="npc" style="top: 75%; left: 45%; width: 230px; height: auto" onclick="startQuest(3)">
         <img src="assets/npc5.png" class="npc" style="top: 36%; left: 62%; width:120px; height: auto" onclick="startQuest(5)">
-        <img src="assets/npc6.png" class="npc" style="top: 26%; left: 49%; width: 120px; height: auto;" onclick="showBubble('Frostmourne hungers..')">
+        <img src="assets/npc7.png" class="npc" style="top: 44%; left: 23%; width:100px; height: auto" onclick="showBubbleTiger('Roarrr..')">
+        <img src="assets/npc6.png" class="npc" style="top: 26%; left: 49%; width: 120px; height: auto" onclick="showBubble('Frostmourne hungers..')">
         <div id="npc-bubble" class="speech-bubble hidden" style="top: 20%; left: 55%"></div>
+        <div id="npc-bubble-tiger" class="speech-bubble hidden" style="top: 40%; left: 27%"></div>
+                <!-- 🎉 Congratulations Popup -->
+        <div id="congrats-popup" class="final-modal hidden">
+            <p>🏆 Glückwunsch! Du hast alle Quests gemeistert.</p>
+            <button onclick="showFinalChoice()">Belohnung entdecken</button>
+        </div>
+        <!-- ❓ Final Choice Modal -->
+        <div id="final-choice" class="final-modal hidden">
+            <p>Wir fliegen Ende Juli zusammen nach Norwegen und genießen die Natur. Hast du Lust?</p>
+            <div class="choice-buttons">
+                <button onclick="handleFinalChoice('yes')">Ja</button>
+                <button onclick="handleFinalChoice('no')">Nein</button>
+                <button onclick="handleFinalChoice('maybe')">Vielleicht</button>
+            </div>
+        </div>
     </div>
 
     <!-- Quest-Fenster -->
@@ -35,6 +51,7 @@
         <button onclick="closeModal()">Schließen</button>
     </div>
     <div id="quest-feedback" class="feedback-box hidden"></div>
+    
 
     <audio id="bg-music" src="assets/Old Friends.mp3" autoplay loop></audio>
     <audio id="sound-click" src="assets/sound-click.mp3"></audio>
@@ -42,6 +59,7 @@
     <audio id="sound-wrong" src="assets/sound-wrong.mp3"></audio>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </body>
 
 </html>

@@ -125,3 +125,36 @@ body {
     opacity: 1;
 }
 
+.final-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2e2a1f;
+    color: #f4d03f;
+    border: 3px solid #d4af37;
+    padding: 30px;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    border-radius: 10px;
+    display: none;
+}
+
+
+.choice-buttons button,
+.final-modal button {
+    margin: 5px 10px;
+    padding: 10px 20px;
+    font-family: 'Garamond', serif;
+    background: #f4d03f;
+    border: 2px solid #000;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.choice-buttons button:hover,
+.final-modal button:hover {
+    background: #ffe684;
+}

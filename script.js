@@ -26,10 +26,9 @@ const quests = {
         antwort: "Unter den Sternen"
     },
 };
+
 let currentQuest = null;
-
-
-
+let completedQuests = new Set(); // stores quest IDs that are correct
 
 // Sound-Funktion
 function playSound(soundId) {
@@ -49,17 +48,30 @@ function startQuest(questId) {
 // Antwort prüfen
 function checkAnswer() {
     const userAnswer = document.getElementById("answer").value.trim();
-    const feedback = document.getElementById("quest-feedback");
+    const quest = quests[currentQuest];
 
-    if (userAnswer.toLowerCase() === quests[currentQuest].antwort.toLowerCase()) {
+    if (userAnswer.toLowerCase() === quest.antwort.toLowerCase()) {
         playSound("sound-correct");
         showFeedback("Richtig! Du hast die Quest bestanden.", true);
         document.querySelector(`img[onclick="startQuest(${currentQuest})"]`).style.filter = "grayscale(100%)";
+
+        completedQuests.add(currentQuest);
+
+        closeModal(); // ⬅️ Hide the quest modal
+
+        // Check if all 5 are complete
+        if (completedQuests.size === 5) {
+            setTimeout(() => {
+                showCongratsPopup();
+            }, 1000); // Short delay for feedback to play
+        }
+
     } else {
         playSound("sound-wrong");
         showFeedback("Falsch! Versuche es nochmal.", false);
     }
 }
+
 
 function showFeedback(message, isSuccess) {
     const feedback = document.getElementById("quest-feedback");
@@ -74,6 +86,41 @@ function showFeedback(message, isSuccess) {
     }, 2500);
 }
 
+function allQuestsCompleted() {
+    // Hide feedback, show custom modal
+    document.getElementById("final-choice").style.display = "block";
+}
+
+function showCongratsPopup() {
+    document.getElementById("congrats-popup").style.display = "block";
+}
+
+function showFinalChoice() {
+    document.getElementById("congrats-popup").style.display = "none";
+    document.getElementById("final-choice").style.display = "block";
+}
+
+function handleFinalChoice(choice) {
+    if (choice === 'yes') {
+        triggerFireworks();
+        document.getElementById("final-choice").style.display = "none";
+    } else if (choice === 'no') {
+        showFeedback("Das solltest du vielleicht noch einmal überdenken...", false);
+        // Do NOT close the modal
+    } else {
+        showFeedback("Das solltest du vielleicht noch einmal überdenken...", false);
+        // Keep modal open
+    }
+}
+
+function triggerFireworks() {
+    confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+    showFeedback("🎉 Du hast das Abenteuer vollendet! 🎉", true);
+}
 
 // Modal schließen
 function closeModal() {
@@ -91,6 +138,17 @@ function startAdventure() {
 
 function showBubble(message) {
     const bubble = document.getElementById("npc-bubble");
+    bubble.innerText = message;
+    bubble.classList.remove("hidden");
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+        bubble.classList.add("hidden");
+    }, 3000);
+}
+
+function showBubbleTiger(message) {
+    const bubble = document.getElementById("npc-bubble-tiger");
     bubble.innerText = message;
     bubble.classList.remove("hidden");
 
